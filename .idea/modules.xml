@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/OOP2.iml" filepath="$PROJECT_DIR$/.idea/modules/OOP2.iml" group="OOP2" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="OOP2/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/OOP2.iml" filepath="$PROJECT_DIR$/.idea/modules/OOP2.iml" />
     </modules>
   </component>
 </project>
