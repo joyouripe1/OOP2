@@ -8,5 +8,5 @@ import androidx.room.PrimaryKey
 data class PS(
     @PrimaryKey(autoGenerate = true) val id: Int,
     @ColumnInfo(name = "durasi") val durasi: String,
-    @ColumnInfo(name = "jenis_jaminan") val jenis_jaminan: Int
+    @ColumnInfo(name = "jenis_jaminan") val jenis_jaminan: String
 )

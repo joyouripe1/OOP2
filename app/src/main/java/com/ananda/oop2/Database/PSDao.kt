@@ -16,4 +16,7 @@ interface PSDao {
 
     @Query("SELECT * FROM PS")
     suspend fun getAllPS(): List<PS>
+
+    @Query("SELECT * FROM PS WHERE id=:ps_id")
+    suspend fun getPs(ps_id: Int) : List<PS>
 }
