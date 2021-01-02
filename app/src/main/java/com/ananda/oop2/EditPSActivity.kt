@@ -32,6 +32,14 @@ class EditPSActivity : AppCompatActivity() {
                 finish()
             }
         }
+        btn_updatePS.setOnClickListener{
+            CoroutineScope(Dispatchers.IO).launch {
+                db.PSDao().updatePS(
+                    PS(psId, txt_durasi.text.toString(), txt_jenis_jaminan.text.toString() )
+                )
+                finish()
+            }
+        }
     }
 
     fun setupView() {
@@ -40,8 +48,15 @@ class EditPSActivity : AppCompatActivity() {
         when (intentType) {
             Constant.TYPE_CREATE -> {
 
+                btn_updatePS.visibility = View.GONE
+
             }
             Constant.TYPE_READ -> {
+                btn_savePS.visibility = View.GONE
+                btn_updatePS.visibility = View.GONE
+                getPs()
+            }
+            Constant.TYPE_UPDATE -> {
                 btn_savePS.visibility = View.GONE
                 getPs()
             }

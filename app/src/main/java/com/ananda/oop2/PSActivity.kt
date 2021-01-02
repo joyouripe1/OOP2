@@ -59,6 +59,10 @@ class PSActivity : AppCompatActivity() {
             override fun onDelete(ps: PS){
                 deleteDialog(ps)
             }
+            override fun onUpdate(ps: PS) {
+                // edit data
+                intentEdit(ps.id, Constant.TYPE_UPDATE)
+            }
 
         })
         list_PS.apply {

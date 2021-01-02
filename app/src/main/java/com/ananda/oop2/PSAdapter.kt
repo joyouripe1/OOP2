@@ -27,6 +27,9 @@ class PSAdapter (private val AllPS: ArrayList<PS>, private val listener: OnAdapt
         holder.view.icon_delete.setOnClickListener {
             listener.onDelete(ps)
         }
+        holder.view.icon_edit.setOnClickListener {
+            listener.onUpdate(ps)
+        }
     }
 
     class PSViewHolder(val view: View) : RecyclerView.ViewHolder(view)
@@ -40,6 +43,7 @@ class PSAdapter (private val AllPS: ArrayList<PS>, private val listener: OnAdapt
     interface OnAdapterListener {
         fun onClick(ps: PS)
         fun onDelete(ps: PS)
+        fun onUpdate(ps: PS)
     }
 
 }
