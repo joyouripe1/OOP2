@@ -9,6 +9,9 @@ import com.ananda.oop2.Database.User
 
 @Database(entities = arrayOf(PS::class, User::class), version = 1)
 
+
+
+
 abstract class AppRoomDB : RoomDatabase() {
 
     abstract fun PSDao(): PSDao
