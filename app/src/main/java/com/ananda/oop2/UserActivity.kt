@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ananda.oop2.Database.AppRoomDB
 import com.ananda.oop2.Database.Constant
@@ -28,6 +29,10 @@ class UserActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        loadUser()
+    }
+
+    fun loadUser() {
         CoroutineScope(Dispatchers.IO).launch {
             val allUser = db.userDao().getAllUser()
             Log.d("UserActivity", "dbResponse: $allUser")
@@ -48,6 +53,9 @@ class UserActivity : AppCompatActivity() {
             override fun onClick(user: User) {
                 intentEdit(user.id, Constant.TYPE_READ)
             }
+            override fun onDelete(user: User) {
+                deleteDialog(user)
+            }
 
         })
         list_user.apply {
@@ -62,6 +70,24 @@ class UserActivity : AppCompatActivity() {
                 .putExtra("intent_id", userId)
                 .putExtra("intent_type", intentType)
         )
+    }
+    private fun deleteDialog(user: User) {
+        val alertDialog = AlertDialog.Builder(this)
+        alertDialog.apply {
+            setTitle("Konfirmasi")
+            setMessage("Yakin ingin menghapus data ini?")
+            setNegativeButton("Batal") { dialogInterface, i ->
+                dialogInterface.dismiss()
+            }
+            setPositiveButton("Hapus") { dialogInterface, i ->
+                dialogInterface.dismiss()
+                CoroutineScope(Dispatchers.IO).launch {
+                    db.userDao().deleteUser(user)
+                    loadUser()
+                }
+            }
+        }
+        alertDialog.show()
     }
 
 }

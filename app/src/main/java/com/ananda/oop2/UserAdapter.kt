@@ -23,7 +23,11 @@ class UserAdapter (private val AllUser: ArrayList<User>, private val listener: O
         holder.view.text_username.text = user.username
         holder.view.text_username.setOnClickListener {
             listener.onClick(user)
+            }
+        holder.view.icon_delete.setOnClickListener {
+            listener.onDelete(user)
         }
+
     }
 
     class UserViewHolder(val view: View) : RecyclerView.ViewHolder(view)
@@ -36,6 +40,7 @@ class UserAdapter (private val AllUser: ArrayList<User>, private val listener: O
 
     interface OnAdapterListener {
         fun onClick(user: User)
+        fun onDelete(user: User)
     }
 
 }

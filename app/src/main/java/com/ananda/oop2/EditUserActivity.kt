@@ -34,6 +34,7 @@ class EditUserActivity : AppCompatActivity() {
         }
     }
     fun setupView() {
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         val intentType = intent.getIntExtra("intent_type", 0)
         when (intentType) {
             Constant.TYPE_CREATE -> {
@@ -52,6 +53,10 @@ class EditUserActivity : AppCompatActivity() {
             val users =  db.userDao().getUser( userId )[0]
             txt_nama.setText( users.nama )
             txt_username.setText( users.username )
+        }
+        override fun onSupportNavigateUp(): Boolean {
+            onBackPressed()
+            return super.onSupportNavigateUp()
         }
     }
 }
