@@ -56,6 +56,10 @@ class UserActivity : AppCompatActivity() {
             override fun onDelete(user: User) {
                 deleteDialog(user)
             }
+            override fun onUpdate(user: User) {
+                // edit data
+                intentEdit(user.id, Constant.TYPE_UPDATE)
+            }
 
         })
         list_user.apply {
