@@ -21,6 +21,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, UserActivity::class.java)
             startActivity(intent)
         }
+
+        btn_pemilik.setOnClickListener{
+            val intent = Intent(this, PemilikActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 }
